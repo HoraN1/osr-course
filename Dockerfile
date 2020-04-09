@@ -20,6 +20,6 @@ RUN export uid=1000 gid=1000 && \
     useradd -d ${HOME} -u ${uid} -g ${gid} -m -s /bin/bash ${user} && \
     echo "${user} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/sudoers_${user} && \
     sudo usermod -a -G video ${user}
-
+USER ${user}
 WORKDIR ${HOME}
 CMD bash
