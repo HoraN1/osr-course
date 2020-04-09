@@ -1,6 +1,5 @@
-FROM nvidia/cudagl:10.1-devel-ubuntu16.04
-LABEL maintainer="He Zhanxin" \
-      version="V0.1"
+FROM nvidia/cudagl:10.2-base-ubuntu16.04
+LABEL maintainer="He Zhanxin" 
     
 # Install tools required
 RUN apt-get update && apt-get install -y --no-install-recommends\
