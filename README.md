@@ -1,13 +1,24 @@
 # OSR-course
 ## A repository to simplify the environment setup for a [open-source-robotics course](http://www.osrobotics.org/osr/)  
 
-## GPU Dependency
+## Dependencies: GPU, course content
 To start with, make sure you installed nvidia-docker such that docker run command recognizes ```--gpus all``` tag.
 You can find out more at [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker).
 
-## To get the latest image
+Setup you working directory
 ```
-docker pull horasun/ros-gui:latest
+git clone https://github.com/HoraN1/osr-course.git
+```
+
+To get the course content, in current path, run
+```
+bash get-course.sh
+```
+And you will see a new directory called catkin_ws in you current directory.
+
+## To build the osr-course image
+```
+docker build -t <your-custom-name> .
 ``` 
 
 ## To run the image with GUI-enabled
