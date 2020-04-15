@@ -1,4 +1,4 @@
-FROM nvidia/cudagl:10.1-base-ubuntu16.04
+FROM ros:kinetic-ros-base-xenial
 LABEL maintainer="He Zhanxin" 
     
 # Install tools required
@@ -12,20 +12,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
 # User and permissions
 ARG user=cri_osr
 ARG group=cri_osr
-ENV WORKDIR=/home/${user}
+ENV HOME=/home/${user}
 RUN export uid=1000 gid=1000 && \
     mkdir -p /etc/sudoers.d && \
     groupadd -g ${gid} ${group} && \
-    useradd -d ${WORKDIR} -u ${uid} -g ${gid} -m -s /bin/bash ${user} && \
+    useradd -d ${HOME} -u ${uid} -g ${gid} -m -s /bin/bash ${user} && \
     echo "${user} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/sudoers_${user} && \
     sudo usermod -a -G video ${user}
 USER ${user}
-WORKDIR ${WORKDIR}
+WORKDIR ${HOME}/catkin_ws/src
 
 # Modify here to install extra packages.
 
 # # Install OpenRave
-# RUN mkdir -p ${WORKDIR}/git && cd ${WORKDIR}/git && \
+# RUN mkdir -p ${HOME}/git && cd ${HOME}/git && \
 #     git clone https://github.com/crigroup/openrave-installation.git && \
 #     cd openrave-installation && \
 #     ./install-dependencies.sh && \
@@ -40,5 +40,5 @@ WORKDIR ${WORKDIR}
 # RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl && \
 #     apt-get update && \
 #     apt-get install libpcl-all
-
+ADD ./test-gui.sh WORKDIR
 CMD bash
