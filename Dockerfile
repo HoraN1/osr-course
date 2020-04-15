@@ -1,4 +1,4 @@
-FROM ros:kinetic-ros-base-xenial
+FROM nvidia/cudagl:10.1-base-ubuntu16.04
 LABEL maintainer="He Zhanxin" 
     
 # Install tools required
@@ -6,8 +6,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     apt-utils build-essential \
     software-properties-common \
     ipython python-dev python-numpy python-pip python-scipy \
-    vim wget curl lsb-release sudo && \
+    vim wget curl lsb-release mlocate sudo \
+# Install openCV 
+    libopencv-dev python-opencv \
+# Install PCL
+    libpcl-dev && \
     rm -rf /var/lib/apt/lists/* 
+
+# Install OpenRave
+RUN mkdir -p ${HOME}/git && cd ${HOME}/git && \
+    git clone https://github.com/crigroup/openrave-installation.git && \
+    cd openrave-installation && \
+    ./install-dependencies.sh && \
+    ./install-osg.sh && \
+    ./install-fcl.sh && \
+    ./install-openrave.sh
 
 # User and permissions
 ARG user=cri_osr
@@ -22,9 +35,5 @@ RUN export uid=1000 gid=1000 && \
 USER ${user}
 WORKDIR ${HOME}/catkin_ws/src
 
-# Modify here to install extra packages.
-
-# Copy then toolsset up script and run
-COPY ./build.sh .
 COPY ./test-gui.sh .
 CMD bash
