@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     apt-utils build-essential \
     software-properties-common \
     ipython python-dev python-numpy python-pip python-scipy \
-    vim wget curl lsb-release mlocate sudo \
+    git vim wget curl lsb-release mlocate sudo \
 # Install openCV 
     libopencv-dev python-opencv \
 # Install PCL
