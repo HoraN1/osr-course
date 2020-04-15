@@ -25,6 +25,6 @@ WORKDIR ${HOME}/catkin_ws/src
 # Modify here to install extra packages.
 
 # Copy then toolsset up script and run
-COPY ./build.sh WORKDIR
-COPY ./test-gui.sh WORKDIR
+COPY ./build.sh .
+COPY ./test-gui.sh .
 CMD bash
