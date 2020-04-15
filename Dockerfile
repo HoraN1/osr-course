@@ -24,21 +24,7 @@ WORKDIR ${HOME}/catkin_ws/src
 
 # Modify here to install extra packages.
 
-# # Install OpenRave
-# RUN mkdir -p ${HOME}/git && cd ${HOME}/git && \
-#     git clone https://github.com/crigroup/openrave-installation.git && \
-#     cd openrave-installation && \
-#     ./install-dependencies.sh && \
-#     ./install-osg.sh && \
-#     ./install-fcl.sh && \
-#     ./install-openrave.sh &&
-
-# # Install OpenCV
-# RUN pip install opencv-python
-
-# # Install PCL
-# RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl && \
-#     apt-get update && \
-#     apt-get install libpcl-all
-ADD ./test-gui.sh WORKDIR
+# Copy then toolsset up script and run
+COPY ./build.sh WORKDIR
+COPY ./test-gui.sh WORKDIR
 CMD bash
