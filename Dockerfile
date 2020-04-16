@@ -30,6 +30,7 @@ RUN export uid=1000 gid=1000 && \
     sudo usermod -a -G video ${user}
 USER ${user}
 WORKDIR ${HOME}/catkin_ws/src
+RUN sudo chown $user:$group ${HOME}/catkin_ws
 
 COPY ./test-gui.sh .
 CMD bash
