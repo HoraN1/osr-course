@@ -1,3 +1,9 @@
 #!/bin/bash
-sudo apt-get update && sudo apt-get install -y x11-apps
-xclock
+#
+# Author:
+#     He Zhanxin <https://github.com/HoraN1>
+#
+# Description:
+#     GUI function test script.
+
+openrave data/lab1.env.xml

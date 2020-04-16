@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# Author:
+#     He Zhanxin <https://github.com/HoraN1>
+
+# Description:
+#     Docker run command scripts: docker run ...
 
 docker run --gpus all -it \
     --net=host \
