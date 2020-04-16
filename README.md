@@ -1,9 +1,11 @@
 # OSR-course
 ## A repository to simplify the environment setup for a [open-source-robotics course](http://www.osrobotics.org/osr/)  
 
+This course is built on Ubuntu16.04 with ROS. 
+
 ## Dependencies: GPU, course content
-To start with, make sure you installed nvidia-docker such that docker run command recognizes ```--gpus all``` tag.
-You can find out more at [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker).
+
+To start with, make sure you installed nvidia-docker such that docker run command recognizes ```--gpus all``` tag. You can find out more at [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker).
 
 Setup you working directory
 ```

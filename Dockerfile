@@ -1,17 +1,13 @@
-FROM nvidia/cudagl:10.1-base-ubuntu16.04
+FROM horasun/ros-gui
 LABEL maintainer="He Zhanxin" 
     
 # Install tools required
-RUN apt-get update && apt-get install -y --no-install-recommends\
-    apt-utils build-essential \
-    software-properties-common \
-    ipython python-dev python-numpy python-pip python-scipy \
-    git vim wget curl lsb-release mlocate sudo \
+RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends\
 # Install openCV 
     libopencv-dev python-opencv \
 # Install PCL
     libpcl-dev && \
-    rm -rf /var/lib/apt/lists/* 
+    sudo rm -rf /var/lib/apt/lists/* 
 
 # Install OpenRave
 RUN mkdir -p ${HOME}/git && cd ${HOME}/git && \
