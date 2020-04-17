@@ -30,7 +30,9 @@ RUN export uid=1000 gid=1000 && \
     sudo usermod -a -G video ${user}
 USER ${user}
 WORKDIR ${HOME}/catkin_ws/src
-RUN sudo chown $user:$group ${HOME}/catkin_ws
 
-COPY ./test-gui.sh .
+RUN sudo chown -R $user:$group ${HOME}/catkin_ws && \
+    rosdep update
+
+COPY scripts-container ${HOME}
 CMD bash
