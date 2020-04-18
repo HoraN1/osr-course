@@ -2,7 +2,7 @@
 
 ## A repository to simplify the environment setup for a [open-source-robotics course](http://www.osrobotics.org/osr/)  
 
-This course is built on Ubuntu16.04 with ROS. The base image is [horasun/ros-gui](https://github.com/HoraN1/docker-gui-ros). It simplifies some procedures listed on the course website. You can just follow the instructions below to get your environment setup.
+This course is built on Ubuntu16.04 with ROS. The base image is [horasun/ros-gui](https://github.com/HoraN1/docker-gui-ros). It simplifies some procedures listed on the course website. You can just follow the instructions below to get your environment setup. For your convenience, I pushed a dependencies-ready image called `horasun/osr:ready`. If you pulled it, you can jump to step4 and continue. If everything is fine and all the dependencies and environments are set up, I recommend you to commit this container to a new image such that you don't need to do these steps next time.
 
 ## 1. Basic setup: Docker, Nvidia-docker
 
