@@ -2,9 +2,9 @@
 
 ## A repository to simplify the environment setup for a [open-source-robotics course](http://www.osrobotics.org/osr/)  
 
-This course is built on Ubuntu16.04 with ROS. The base image is [horasun/ros-gui](https://github.com/HoraN1/docker-gui-ros).
+This course is built on Ubuntu16.04 with ROS. The base image is [horasun/ros-gui](https://github.com/HoraN1/docker-gui-ros). It simplifies some procedures listed on the course website. You can just follow the instructions below to get your environment setup.
 
-## 1. Basic setup: Docker, Nvidia-docker, course content
+## 1. Basic setup: Docker, Nvidia-docker
 
 To start with, make sure you installed docker. Installation instructions can be found at [install docker](https://docs.docker.com/engine/install/). 
 
@@ -16,14 +16,6 @@ At your working directory
 git clone https://github.com/HoraN1/osr-course.git
 cd osr-course
 ```
-
-To get the course content, run
-
-```
-bash scripts/get-course.sh
-```
-
-And you will see a new directory called catkin_ws in your current directory.
 
 ## 2. Build the osr-course image and run the image
 
@@ -72,13 +64,21 @@ bash ~/initialize-workspace.sh
 
 ## 5. Test the installation and setup
 
-In the running docker container, run:
+In the running docker container, run the command below to test OpenRave
+
+```
+openrave data/lab1.env.xml
+```
+
+Run the command below to visualize the robot with RVIZ
 
 ```
 roslaunch osr_description visualize_robot_gripper.launch
 ```
 
-You can visualize the robot with RVIZ. Or run this command to start gazebo simulation
+If you encounter an error like `roslaunch: command not found`, run `source ~/.bashrc` first. 
+
+Run this command to start gazebo simulation
 
 ```
 roslaunch osr_gazebo robotic_setup.launch
