@@ -11,8 +11,7 @@ course_path="./catkin_ws/src/osr_course_pkgs"
 if [ ! -d "$course_path" ]
 then
     mkdir -p $PWD/catkin_ws/src
-    cd $PWD/catkin_ws/src
-    git clone https://github.com/crigroup/osr_course_pkgs.git
+    git clone https://github.com/crigroup/osr_course_pkgs.git $PWD/catkin_ws/src/osr_course_pkgs
 fi
 
 tag=${1:-latest}
