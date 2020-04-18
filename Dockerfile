@@ -10,29 +10,18 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends\
     sudo rm -rf /var/lib/apt/lists/* 
 
 # Install OpenRave
-RUN mkdir -p ${HOME}/git && cd ${HOME}/git && \
+RUN mkdir -p ~/git && cd ~/git && \
     git clone https://github.com/crigroup/openrave-installation.git && \
     cd openrave-installation && \
     ./install-dependencies.sh && \
     ./install-osg.sh && \
     ./install-fcl.sh && \
-    ./install-openrave.sh
+    ./install-openrave.sh && \
+    sudo rm -rf ~/git/*
 
-# User and permissions
-ARG user=cri_osr
-ARG group=cri_osr
-ENV HOME=/home/${user}
-RUN export uid=1000 gid=1000 && \
-    mkdir -p /etc/sudoers.d && \
-    groupadd -g ${gid} ${group} && \
-    useradd -d ${HOME} -u ${uid} -g ${gid} -m -s /bin/bash ${user} && \
-    echo "${user} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/sudoers_${user} && \
-    sudo usermod -a -G video ${user}
-USER ${user}
-WORKDIR ${HOME}/catkin_ws/src
-
-RUN sudo chown -R $user:$group ${HOME}/catkin_ws && \
-    rosdep update
-
-COPY scripts-container ${HOME}
+# Configure .bashrc
+RUN echo "# Configure your .bashrc" >> ~/.bashrc && \
+    echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+    
+COPY ./scripts-container $HOME
 CMD bash

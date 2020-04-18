@@ -13,11 +13,13 @@ then
     mkdir -p catkin_ws/src
 fi
 
+tag=${1:-latest}
+
 docker run --gpus all -it \
     --net=host \
     -e DISPLAY=$DISPLAY \
     -e QT_X11_NO_MITSHM=1 \
     -e TERM=xterm-256color \
     -v $HOME/.Xauthority:/root/.Xauthority \
-    -v $PWD/catkin_ws:~/catkin_ws \
-    horasun/osr-course
+    -v $PWD/catkin_ws:/home/container/catkin_ws \
+    horasun/osr-course:$tag
