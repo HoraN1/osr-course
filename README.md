@@ -6,9 +6,9 @@ This course is built on Ubuntu16.04 with ROS. The base image is [horasun/ros-gui
 
 ## 1. Basic setup: Docker, Nvidia-docker
 
-To start with, make sure you installed docker. Installation instructions can be found at [install docker](https://docs.docker.com/engine/install/). 
+To start with, make sure you installed *docker*. Installation instructions can be found at [install docker](https://docs.docker.com/engine/install/). 
 
-Then, install nvidia-docker such that docker run command recognizes ```--gpus all``` tag. You can find out more at [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker).
+Then, install *nvidia-docker* such that docker run command recognizes ```--gpus all``` tag. You can find out more at [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker).
 
 At your working directory
 
@@ -19,7 +19,7 @@ cd osr-course
 
 ## 2. Build the osr-course image and run the image
 
-You can either build from Dockerfile or pull from Docker hub with `docker pull horasun/osr-course:latest`.
+You can either build from Dockerfile or pull from Docker hub with `docker pull horasun/osr-course:latest`. Run all the command below in your **host machine terminal**.
 
 Build with default name horasun/osr-course
 
@@ -46,7 +46,7 @@ You can change the container name with the tag ```--name=<CUSTOM_NAME>``` in ```
 
 ## 3. Install dependencies and packages
 
-In the running docker container, run:
+In the **running docker container**, run:
 
 ```
 # In docker container terminal
@@ -78,10 +78,10 @@ roslaunch osr_description visualize_robot_gripper.launch
 
 If you encounter an error like `roslaunch: command not found`, run `source ~/.bashrc` first. 
 
-Run this command to start gazebo simulation
+Run this command to start gazebo simulation, you may run `gzserver --verbose` to run an empty model and setup gazebo online models.
 
 ```
 roslaunch osr_gazebo robotic_setup.launch
 ```
 
-For more information regarding how to use this workspace or testing, please visit the [course website](http://www.osrobotics.org/osr/installation/system.html).
+The first time you run this command, it may take some time and may cause some error. For more information regarding how to use this workspace or testing, please visit the [course website](http://www.osrobotics.org/osr/installation/system.html).
