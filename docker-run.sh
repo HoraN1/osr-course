@@ -7,11 +7,12 @@
 #     Docker run command scripts: docker run ...
 
 # Looking for catkin workspace, if not found, make one.
-course_path="./catkin_ws/src/osr_course_pkgs"
+course_path="$PWD/catkin_ws/src/osr_course_pkgs"
+github_path="https://github.com/crigroup/osr_course_pkgs.git"
 if [ ! -d "$course_path" ]
 then
     mkdir -p $PWD/catkin_ws/src
-    git clone https://github.com/crigroup/osr_course_pkgs.git $PWD/catkin_ws/src/osr_course_pkgs
+    git clone $github_path $course_path
 fi
 
 tag=${1:-latest}
